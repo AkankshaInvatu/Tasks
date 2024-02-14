@@ -1,4 +1,4 @@
-signalr2/LoggingProcess -- steps 
+LoggingProcess -- steps 
 
 Right click on solution "LoggingProcess"
 Go to properties , select multiple projects ,
