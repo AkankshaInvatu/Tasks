@@ -12,48 +12,67 @@
     <title>Parking Details</title>
 </head>
 <body>
-    <h1>Parking Details</h1>
+    <h3 id="currentDateHeading"></h3> 
+
     <ul id="parkingList"></ul>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
     <script>
         const sessionsCount = {};
+        const parkingIds = []; // Array to store parking IDs already added to the list
+        let currentDate; // Variable to store today's date
+        let midnightTimeout; // Timeout reference to reset session count at midnight
+
+        // Function to format date in 'YYYY-MM-DD' UTC format
+        const getUTCDate = () => new Date().toISOString().split('T')[0];
+
+        // Function to reset session count and update current date
+        const resetSessionCount = () => {
+            currentDate = getUTCDate(); // Update current date
+            $('#currentDateHeading').text(`Today's Date: ${currentDate}`); // Update displayed date in heading
+            parkingIds.length = 0; // Clear the parkingIds array
+            Object.keys(sessionsCount).forEach(key => sessionsCount[key] = 0); // Reset session count for all parking IDs
+            // Schedule the next reset at midnight
+            const now = new Date();
+            const midnight = new Date(now);
+            midnight.setHours(24, 0, 0, 0);
+            const timeUntilMidnight = midnight - now;
+            midnightTimeout = setTimeout(resetSessionCount, timeUntilMidnight);
+        };
+
+        // Initialize session count reset
+        resetSessionCount();
+
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/parkingHub")
             .configureLogging(signalR.LogLevel.Information)
             .build();
 
-        // Start the SignalR connection
         connection.start().catch(err => console.error(err.toString()));
 
         connection.on("ReceiveUserData", function (parkingString) {
-            // Parse the string into a JavaScript object
             const parking = JSON.parse(parkingString);
-
-            // Extract the ParkingId property from the received data
             const parkingId = parking.ParkingId;
-            console.log(parkingId);
 
-            // Increment the sessions count for the parking ID
-            sessionsCount[parkingId] = (sessionsCount[parkingId] || 0) + 1;
+            // Check if the date has changed since the last session count reset
+            const now = getUTCDate();
+            if (now !== currentDate) {
+                // Reset session count and update current date
+                resetSessionCount();
+            }
 
-            console.log(sessionsCount);
-
-            // Update the list item with the new sessions count
-            const listItem = `<li>Parking ID: ${parkingId}, Sessions: ${sessionsCount[parkingId]}</li>`;
-
-            console.log(listItem);
-
-            // Check if the list item already exists for this parking ID
-            const existingItem = $(`#parkingList li[data-parking-id="${parkingId}"]`);
-            console.log(existingItem);
-
-            // If the list item already exists, update it; otherwise, append a new one
-            if (existingItem.length > 0) {
-                existingItem.html(listItem);
+            // If parking ID is not in the list, add it and increment its session count
+            if (!parkingIds.includes(parkingId)) {
+                parkingIds.push(parkingId);
+                sessionsCount[parkingId] = 1; // Start count from 1
+                const listItem = `<li data-parking-id="${parkingId}">Parking ID: ${parkingId}, Sessions :${sessionsCount[parkingId]}</li>`;
+                $('#parkingList').append(listItem);
             } else {
-                $('#parkingList').append(`<li data-parking-id="${parkingId}">${listItem}</li>`);
+                // Increment session count for existing parking ID
+                sessionsCount[parkingId]++;
+                // Update session count in the existing list item
+                $(`#parkingList li[data-parking-id="${parkingId}"]`).text(`Parking ID: ${parkingId}, Sessions: ${sessionsCount[parkingId]}`);
             }
         });
     </script>

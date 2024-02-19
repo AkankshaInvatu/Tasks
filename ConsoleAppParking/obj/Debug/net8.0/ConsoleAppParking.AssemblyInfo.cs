@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConsoleAppParking")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a216e58525a61e16b75df0f8f93c1ed5cde2705c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f337b627b88638f6e5e191b561ee40213835c122")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConsoleAppParking")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConsoleAppParking")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
