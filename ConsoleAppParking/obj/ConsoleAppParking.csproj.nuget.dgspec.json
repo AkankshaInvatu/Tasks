@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Task\\Tasks\\ConsoleAppParking\\ConsoleAppParking.csproj": {}
+    "C:\\Tasks\\Tasks\\ConsoleAppParking\\ConsoleAppParking.csproj": {}
   },
   "projects": {
-    "C:\\Task\\Tasks\\ConsoleAppParking\\ConsoleAppParking.csproj": {
+    "C:\\Tasks\\Tasks\\ConsoleAppParking\\ConsoleAppParking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Task\\Tasks\\ConsoleAppParking\\ConsoleAppParking.csproj",
+        "projectUniqueName": "C:\\Tasks\\Tasks\\ConsoleAppParking\\ConsoleAppParking.csproj",
         "projectName": "ConsoleAppParking",
-        "projectPath": "C:\\Task\\Tasks\\ConsoleAppParking\\ConsoleAppParking.csproj",
+        "projectPath": "C:\\Tasks\\Tasks\\ConsoleAppParking\\ConsoleAppParking.csproj",
         "packagesPath": "C:\\Users\\akank\\.nuget\\packages\\",
-        "outputPath": "C:\\Task\\Tasks\\ConsoleAppParking\\obj\\",
+        "outputPath": "C:\\Tasks\\Tasks\\ConsoleAppParking\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

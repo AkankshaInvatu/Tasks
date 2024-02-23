@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Task\\Tasks\\ConsoleAppProcess\\ConsoleAppProcess.csproj": {}
+    "C:\\Tasks\\Tasks\\ConsoleAppProcess\\ConsoleAppProcess.csproj": {}
   },
   "projects": {
-    "C:\\Task\\Tasks\\ConsoleAppProcess\\ConsoleAppProcess.csproj": {
+    "C:\\Tasks\\Tasks\\ConsoleAppProcess\\ConsoleAppProcess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Task\\Tasks\\ConsoleAppProcess\\ConsoleAppProcess.csproj",
+        "projectUniqueName": "C:\\Tasks\\Tasks\\ConsoleAppProcess\\ConsoleAppProcess.csproj",
         "projectName": "ConsoleAppProcess",
-        "projectPath": "C:\\Task\\Tasks\\ConsoleAppProcess\\ConsoleAppProcess.csproj",
+        "projectPath": "C:\\Tasks\\Tasks\\ConsoleAppProcess\\ConsoleAppProcess.csproj",
         "packagesPath": "C:\\Users\\akank\\.nuget\\packages\\",
-        "outputPath": "C:\\Task\\Tasks\\ConsoleAppProcess\\obj\\",
+        "outputPath": "C:\\Tasks\\Tasks\\ConsoleAppProcess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

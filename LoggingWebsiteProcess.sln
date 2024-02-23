@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingWebsiteProcess", "Lo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppProcess", "ConsoleAppProcess\ConsoleAppProcess.csproj", "{C2E418FE-4187-41B4-91AA-08FB3991ABAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppParking", "ConsoleAppParking\ConsoleAppParking.csproj", "{FA5C2F24-DD27-4C0C-8372-A958B6569124}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppParking", "ConsoleAppParking\ConsoleAppParking.csproj", "{FA5C2F24-DD27-4C0C-8372-A958B6569124}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Task\\Tasks\\LoggingWebsiteProcess\\LoggingWebsiteProcess.csproj": {}
+    "C:\\Tasks\\Tasks\\LoggingWebsiteProcess\\LoggingWebsiteProcess.csproj": {}
   },
   "projects": {
-    "C:\\Task\\Tasks\\LoggingWebsiteProcess\\LoggingWebsiteProcess.csproj": {
+    "C:\\Tasks\\Tasks\\LoggingWebsiteProcess\\LoggingWebsiteProcess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Task\\Tasks\\LoggingWebsiteProcess\\LoggingWebsiteProcess.csproj",
+        "projectUniqueName": "C:\\Tasks\\Tasks\\LoggingWebsiteProcess\\LoggingWebsiteProcess.csproj",
         "projectName": "LoggingWebsiteProcess",
-        "projectPath": "C:\\Task\\Tasks\\LoggingWebsiteProcess\\LoggingWebsiteProcess.csproj",
+        "projectPath": "C:\\Tasks\\Tasks\\LoggingWebsiteProcess\\LoggingWebsiteProcess.csproj",
         "packagesPath": "C:\\Users\\akank\\.nuget\\packages\\",
-        "outputPath": "C:\\Task\\Tasks\\LoggingWebsiteProcess\\obj\\",
+        "outputPath": "C:\\Tasks\\Tasks\\LoggingWebsiteProcess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
