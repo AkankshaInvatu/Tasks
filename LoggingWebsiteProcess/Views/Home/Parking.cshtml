@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Parking";
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,7 @@
     <title>Parking Details</title>
 </head>
 <body>
-    <h3 id="currentDateHeading"></h3> 
+    <h3 id="currentDateHeading"></h3>
 
     <ul id="parkingList"></ul>
 
@@ -22,6 +21,7 @@
         const sessionsCount = {};
         const parkingIds = []; // Array to store parking IDs already added to the list
         let currentDate; // Variable to store today's date
+        let lastResetTime; // Variable to store the last session count reset time
         let midnightTimeout; // Timeout reference to reset session count at midnight
 
         // Function to format date in 'YYYY-MM-DD' UTC format
@@ -29,14 +29,35 @@
 
         // Function to reset session count and update current date
         const resetSessionCount = () => {
-            currentDate = getUTCDate(); // Update current date
-            $('#currentDateHeading').text(`Today's Date: ${currentDate}`); // Update displayed date in heading
-            parkingIds.length = 0; // Clear the parkingIds array
-            Object.keys(sessionsCount).forEach(key => sessionsCount[key] = 0); // Reset session count for all parking IDs
+            // Get the current date
+            const currentDateObj = new Date();
+            const currentDateUTC = currentDateObj.toISOString().split('T')[0];
+            // Update current date
+            currentDate = currentDateUTC;
+
+            // Get the previous day's date
+            const previousDateObj = new Date(currentDateObj);
+            previousDateObj.setDate(previousDateObj.getDate() - 1);
+            const previousDateUTC = previousDateObj.toISOString().split('T')[0];
+
+            // Create a new date object with the previous day's date and time set to 23:59:59 (just before midnight)
+            const lastResetTimeDate = new Date(previousDateUTC);
+            lastResetTimeDate.setUTCHours(23, 59, 59, 0); // Set time to 23:59:59 (just before midnight)
+            lastResetTime = lastResetTimeDate.toUTCString(); // Update last reset time
+
+            // Update displayed date and last reset time in heading
+            $('#currentDateHeading').text(`Today's Date: ${currentDate}, Last Session Count Reset Time: ${lastResetTime}`);
+
+            // Clear the parkingIds array
+            parkingIds.length = 0;
+
+            // Reset session count for all parking IDs
+            Object.keys(sessionsCount).forEach(key => sessionsCount[key] = 0);
+
             // Schedule the next reset at midnight
             const now = new Date();
             const midnight = new Date(now);
-            midnight.setHours(24, 0, 0, 0);
+            midnight.setUTCHours(24, 0, 0, 0);
             const timeUntilMidnight = midnight - now;
             midnightTimeout = setTimeout(resetSessionCount, timeUntilMidnight);
         };
