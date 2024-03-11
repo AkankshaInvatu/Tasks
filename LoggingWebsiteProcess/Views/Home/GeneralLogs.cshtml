@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Streaming Logs</title>
+    <style>
+        /* Basic styling for the list */
+        #logList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+            #logList li {
+                margin-bottom: 5px;
+                border: 1px solid #ccc;
+                padding: 10px;
+                background-color: #f9f9f9;
+            }
+
+        .message {
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Streaming Logs</h1>
+    <ul id="logList"></ul>
+
+    <script>
+        // Simulated data to be sent from the server
+        const logs = [
+            { timestamp: '2024-02-19 12:00:00', message: 'Log message 1', level: 'INFO', source: 'Server 1' },
+            { timestamp: '2024-02-19 12:05:00', message: 'Log message 2', level: 'ERROR', source: 'Server 2' },
+            { timestamp: '2024-02-19 12:10:00', message: 'Log message 3', level: 'WARNING', source: 'Server 3' }
+        ];
+
+        // Function to simulate sending logs at regular intervals
+        function simulateLogStreaming() {
+            // Interval in milliseconds
+            const interval = 2000; // Every 2 seconds
+
+            // Send logs at regular intervals
+            setInterval(() => {
+                // Select a random log from the logs array
+                const randomLog = logs[Math.floor(Math.random() * logs.length)];
+
+                // Create a new list item to display the log data
+                const listItem = document.createElement('li');
+                listItem.textContent = JSON.stringify(randomLog, null, 2); // Convert log object to JSON format
+
+                // Append the list item to the log list
+                document.getElementById('logList').appendChild(listItem);
+            }, interval);
+        }
+
+        // Start simulating log streaming
+        simulateLogStreaming();
+    </script>
+</body>
+</html>

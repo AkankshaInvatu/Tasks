@@ -6,6 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Process Monitor</title>
+    <style>
+        body {
+            background-color: #FCE4EC; /* Light pink background color */
+        }
+    </style>
 </head>
 <body>
     <h1>Process Monitor</h1>
@@ -20,13 +25,22 @@
             .build();
 
         connection.on("ReceiveProcessInfo", function (processInfo) {
-            var processItem = document.createElement("li");
-            processItem.textContent = processInfo;
-            document.getElementById("processList").appendChild(processItem);
+            console.log("Received process info:", processInfo); // Debugging statement
+            // Check if the process name contains "connectors"
+            if (processInfo.toLowerCase().includes("connectors")) {
+                console.log("Process contains 'connectors' keyword:", processInfo); // Debugging statement
+                var processItem = document.createElement("li");
+                processItem.textContent = processInfo;
+                document.getElementById("processList").appendChild(processItem);
+            } else {
+                console.log("Process does not contain 'connectors' keyword, skipping:", processInfo); // Debugging statement
+            }
         });
 
-        connection.start().catch(function (err) {
-            console.error(err.toString());
+        connection.start().then(function () {
+            console.log("SignalR connection established."); // Debugging statement
+        }).catch(function (err) {
+            console.error("Error establishing SignalR connection:", err.toString());
         });
     </script>
 </body>
